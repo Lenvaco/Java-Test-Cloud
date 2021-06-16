@@ -33,6 +33,8 @@
         <spring-cloud-dubbo.version>2.2.5.RELEASE</spring-cloud-dubbo.version>
         <mysql.version>8.0.25</mysql.version>
         <mybatis-plus-starter.version>3.4.3</mybatis-plus-starter.version>
+        <commons-lang3.version>3.12.0</commons-lang3.version>
+        <commons-pool2.version>2.10.0</commons-pool2.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -79,6 +81,16 @@
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-dubbo</artifactId>
                 <version>${spring-cloud-dubbo.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-pool2</artifactId>
+                <version>${commons-pool2.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

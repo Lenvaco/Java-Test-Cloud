@@ -26,4 +26,12 @@ spring:
 #    map-underscore-to-camel-case: true
 #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 server:
-  port: 8083
+  port: 8084
+dubbo:
+  scan:
+    base-packages: com.test.cloud.order.service
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    address: nacos://47.98.137.65:8848
