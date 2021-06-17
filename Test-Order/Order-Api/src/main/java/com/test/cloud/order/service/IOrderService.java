@@ -1,5 +1,8 @@
 package com.test.cloud.order.service;
 
-public interface IOrderService {
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.test.cloud.order.entity.Order;
+
+public interface IOrderService extends IService<Order> {
     void getOrderById(Long id);
 }

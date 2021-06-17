@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/data?serverTimezone=Asia/Shanghai&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://127.0.0.1:3306/java_test_cloud?serverTimezone=Asia/Shanghai&useSSL=false&useUnicode=true&characterEncoding=UTF-8
     username: root
     password: root
     type: com.zaxxer.hikari.HikariDataSource
@@ -19,12 +19,12 @@ spring:
     nacos:
       discovery:
         server-addr: 47.98.137.65:8848
-#mybatis-plus:
-#  mapper-locations: classpath:mapper/*Mapper.xml
-#  type-aliases-package: com.mengyi.mall.product.entity
-#  configuration:
-#    map-underscore-to-camel-case: true
-#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+mybatis-plus:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.test.cloud.order.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 server:
   port: 8084
 dubbo:
