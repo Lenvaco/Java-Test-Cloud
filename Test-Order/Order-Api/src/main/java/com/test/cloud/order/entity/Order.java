@@ -1,7 +1,9 @@
 package com.test.cloud.order.entity;
 
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
@@ -18,6 +20,7 @@ public class Order implements Serializable {
 
     private int orderCount;
 
+    @TableField(fill = FieldFill.INSERT)
     private Date createTime;
 
     public Long getId() {

@@ -4,7 +4,7 @@ import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.test.cloud")
 @EnableDubbo
 public class TestOrderApplication {
     public static void main(String[] args) {

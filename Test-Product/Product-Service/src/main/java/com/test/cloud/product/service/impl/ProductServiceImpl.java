@@ -9,10 +9,15 @@ import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.stereotype.Service;
 
 @Service
-@DubboService
+@DubboService(interfaceName = "productService")
 public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> implements IProductService {
     @Override
     public void getProductById(Long id) {
         System.out.println("getProductById");
+    }
+
+    @Override
+    public boolean saveProduct(Product product) {
+        return this.save(product);
     }
 }

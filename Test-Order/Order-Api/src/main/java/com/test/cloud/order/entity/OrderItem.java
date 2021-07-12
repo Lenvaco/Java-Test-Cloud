@@ -19,6 +19,8 @@ public class OrderItem implements Serializable {
 
     private Long productId;
 
+    private Long itemCount;
+
     public Long getId() {
         return id;
     }
@@ -43,12 +45,21 @@ public class OrderItem implements Serializable {
         this.productId = productId;
     }
 
+    public Long getItemCount() {
+        return itemCount;
+    }
+
+    public void setItemCount(Long itemCount) {
+        this.itemCount = itemCount;
+    }
+
     @Override
     public String toString() {
         return "OrderItem{" +
                 "id=" + id +
                 ", orderId=" + orderId +
                 ", productId=" + productId +
+                ", itemCount=" + itemCount +
                 '}';
     }
 }

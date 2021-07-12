@@ -35,3 +35,6 @@ dubbo:
     port: -1
   registry:
     address: nacos://47.98.137.65:8848
+    check: false
+  cloud:
+    subscribed-services: productService,snowflakeService

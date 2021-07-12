@@ -5,4 +5,5 @@ import com.test.cloud.product.entity.Product;
 
 public interface IProductService extends IService<Product> {
     void getProductById(Long id);
+    boolean saveProduct(Product product);
 }

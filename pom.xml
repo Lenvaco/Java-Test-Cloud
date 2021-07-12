@@ -10,6 +10,8 @@
         <module>Test-Product</module>
         <module>Test-Order</module>
         <module>Test-Common</module>
+        <module>Test-Leaf</module>
+        <module>Test-User</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -33,6 +35,8 @@
         <spring-cloud-dubbo.version>2.2.5.RELEASE</spring-cloud-dubbo.version>
         <mysql.version>8.0.25</mysql.version>
         <mybatis-plus-starter.version>3.4.3</mybatis-plus-starter.version>
+        <hutool-all.version>5.7.3</hutool-all.version>
+        <commons-io.version>2.10.0</commons-io.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <commons-pool2.version>2.10.0</commons-pool2.version>
     </properties>
@@ -81,6 +85,17 @@
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-dubbo</artifactId>
                 <version>${spring-cloud-dubbo.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool-all.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.commons</groupId>

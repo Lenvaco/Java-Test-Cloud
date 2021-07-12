@@ -1,0 +1,39 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/java_test_cloud?serverTimezone=Asia/Shanghai&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: root
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      minimum-idle: 2
+      maximum-pool-size: 10
+      idle-timeout: 600000
+      auto-commit: true
+      max-lifetime: 1000000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+  application:
+    name: User-Service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 47.98.137.65:8848
+#mybatis-plus:
+#  mapper-locations: classpath:mapper/*Mapper.xml
+#  type-aliases-package: com.mengyi.mall.product.entity
+#  configuration:
+#    map-underscore-to-camel-case: true
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+server:
+  port: 8061
+dubbo:
+  scan:
+    base-packages: com.test.cloud.user.service
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    address: nacos://47.98.137.65:8848
+  cloud:
+    subscribed-services: ''

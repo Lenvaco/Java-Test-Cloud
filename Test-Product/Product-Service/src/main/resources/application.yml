@@ -35,3 +35,5 @@ dubbo:
     port: -1
   registry:
     address: nacos://47.98.137.65:8848
+  cloud:
+    subscribed-services: ''

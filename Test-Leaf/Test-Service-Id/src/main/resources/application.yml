@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: Service-Id
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 47.98.137.65:8848
+#mybatis-plus:
+#  mapper-locations: classpath:mapper/*Mapper.xml
+#  type-aliases-package: com.mengyi.mall.product.entity
+#  configuration:
+#    map-underscore-to-camel-case: true
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+server:
+  port: 8091
+dubbo:
+  application:
+    name: ${spring.application.name}
+  scan:
+    base-packages: com.test.cloud.leaf.id.service
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    address: nacos://47.98.137.65:8848
