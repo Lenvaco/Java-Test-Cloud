@@ -33,6 +33,7 @@
         <spring-cloud-alibaba.version>2.2.5.RELEASE</spring-cloud-alibaba.version>
         <spring-cloud-alibaba-nacos-discovery.version>2.2.5.RELEASE</spring-cloud-alibaba-nacos-discovery.version>
         <spring-cloud-dubbo.version>2.2.5.RELEASE</spring-cloud-dubbo.version>
+        <spring-boot-seata.version>1.4.1</spring-boot-seata.version>
         <mysql.version>8.0.25</mysql.version>
         <mybatis-plus-starter.version>3.4.3</mybatis-plus-starter.version>
         <hutool-all.version>5.7.3</hutool-all.version>
@@ -86,6 +87,13 @@
                 <artifactId>spring-cloud-starter-dubbo</artifactId>
                 <version>${spring-cloud-dubbo.version}</version>
             </dependency>
+            <dependency>
+                <groupId>io.seata</groupId>
+                <artifactId>seata-spring-boot-starter</artifactId>
+                <version>${spring-boot-seata.version}</version>
+            </dependency>
+
+
             <dependency>
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>

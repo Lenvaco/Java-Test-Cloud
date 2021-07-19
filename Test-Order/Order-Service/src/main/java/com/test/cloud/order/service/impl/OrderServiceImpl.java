@@ -9,6 +9,7 @@ import com.test.cloud.order.service.IOrderItemService;
 import com.test.cloud.order.service.IOrderService;
 import com.test.cloud.product.entity.Product;
 import com.test.cloud.product.service.IProductService;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.BeanUtils;
@@ -40,6 +41,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         System.out.println("OrderServiceImpl");
     }
 
+    @GlobalTransactional
     @Override
     public boolean saveNewOrder(Order order, List<OrderItem> orderItemList) {
         if (CollectionUtils.isEmpty(orderItemList)) {
