@@ -11,10 +11,12 @@ import com.test.cloud.product.entity.Product;
 import com.test.cloud.product.service.IProductService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.DubboService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -43,6 +45,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         if (CollectionUtils.isEmpty(orderItemList)) {
             return false;
         }
+        // 获取订单的所有商品
         List<Product> productList = productService.listByIds(
                 orderItemList.stream()
                     .map(OrderItem::getProductId)
@@ -51,8 +54,29 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         if (CollectionUtils.isEmpty(productList) || productList.size() != orderItemList.size()) {
             return false;
         }
+        final BigDecimal[] totalPrice = {BigDecimal.ZERO};
+        // 更新商品的状态
         List<Product> products = orderItemList.stream().map((orderItems) ->  {
-            Product product = new Product();
-        }).orElse(Collections.emptyList());
+            for (int i = 0; i < productList.size(); i++) {
+                Product product = productList.get(i);
+                if (product.getId().equals(orderItems.getProductId())) {
+                    totalPrice[0] = totalPrice[0].add(product.getCurPrice().multiply(new BigDecimal(orderItems.getItemCount())));
+                    product.setInventory(product.getInventory() - orderItems.getItemCount());
+                    return product;
+                }
+            }
+            return null;
+        }).collect(Collectors.toList());
+        System.err.println(products.toString());
+        // 商品库存
+        productService.updateBatchById(products);
+        // 保存订单
+        boolean save = save(order);
+        if(save) {
+            throw  new RuntimeException("假设出现异常");
+        }
+        //保存订单项
+        orderItemService.saveBatch(orderItemList);
+        return true;
     }
 }

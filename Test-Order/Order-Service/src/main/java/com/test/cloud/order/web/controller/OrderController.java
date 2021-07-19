@@ -30,7 +30,6 @@ public class OrderController {
     @GetMapping(value = "/")
     public Object getOrder(){
         Result result = idGenService.getId("order");
-        productService.getProductById(1L);
         return ResponseEntity.ok("ID is" + result.getId());
     }
 
@@ -44,10 +43,13 @@ public class OrderController {
         Order order = new Order();
         order.setId(idGenService.getId("order").getId());
         List<OrderItem> orderItemList = new LinkedList<>();
+        Long[] productIds = {1416779386358595649L, 1416779426942681180L, 1416779464179712047L};
         for (int i = 0; i < 3; i++) {
             OrderItem orderItem = new OrderItem();
-            order.setId(idGenService.getId("orderItem").getId());
+            orderItem.setId(idGenService.getId("orderItem").getId());
             orderItem.setOrderId(order.getId());
+            orderItem.setProductId(productIds[i]);
+            orderItem.setItemCount(i + 1L);
             orderItemList.add(orderItem);
         }
         order.setOrderCount(orderItemList.size());

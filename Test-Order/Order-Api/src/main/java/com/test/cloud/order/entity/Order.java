@@ -10,7 +10,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.util.Date;
 
-@TableName("order")
+@TableName("tb_order")
 public class Order implements Serializable {
 
     private static final long serialVersionUID = -616364070513760923L;
