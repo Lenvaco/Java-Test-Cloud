@@ -41,7 +41,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         System.out.println("OrderServiceImpl");
     }
 
-    @GlobalTransactional
+//    @GlobalTransactional
     @Override
     public boolean saveNewOrder(Order order, List<OrderItem> orderItemList) {
         if (CollectionUtils.isEmpty(orderItemList)) {

@@ -35,5 +35,42 @@ dubbo:
     port: -1
   registry:
     address: nacos://47.98.137.65:8848
+    username: nacos
+    password: nacos
   cloud:
     subscribed-services: ''
+
+seata:
+  enabled: true
+  application-id: ${spring.application.name}
+  tx-service-group: my_test_tx_group
+  client:
+    rm:
+      lock:
+        retry-policy-branch-rollback-on-conflict: true
+        retry-interval: 10 # 校验或占用全局锁重试间隔（默认10ms）
+        retry-times: 30 # 校验或占用全局锁重试次数（默认30）
+      report-success-enable: true
+      table-meta-check-enable: false # 自动刷新缓存中的表结构（默认false）
+      report-retry-count: 5 # 一阶段结果上报TC重试次数（默认5）
+      async-commit-buffer-limit: 1000 # 异步提交缓存队列长度（默认10000）
+    undo:
+      log-serialization: kryo
+      data-validation: true
+      log-table: undo_log
+    tm:
+      rollback-retry-count: 3 # 一阶段全局回滚结果上报TC重试次数（默认1次，建议大于1）
+  service:
+    enable-degrade: false # 降级开关
+    disable-global-transaction: false # 禁用全局事务（默认false）
+  transport:
+    enable-client-batch-send-request: true # 客户端事务消息请求是否批量合并发送（默认true）
+  enable-auto-data-source-proxy: true # 数据源自动代理开关（默认false关闭）
+  registry:
+    type: nacos
+    nacos:
+      server-addr: 47.98.137.65:8848
+      group : "SEATA_GROUP"
+      namespace: "public"
+      username: nacos
+      password: nacos
